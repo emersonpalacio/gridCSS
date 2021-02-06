@@ -61,7 +61,11 @@ img {
 
 
 .grid-explicit {
+    /*grid 3x3*/
     display: grid;
-    grid-template-columns: 50% 100px 1fr;
-    grid-template-rows: 2rem 20vh 30%;
+    grid-template-columns: 50% 100px 1fr; /*creacion de columnas*/
+    grid-template-rows: 2rem 20vh 30%; /*creacion de filas*/
+    /*grid de 5x 4*/
+    grid-template-columns: repeat(5, 20%); /* son 5 columnas repartidas de al 20%*/
+    grid-template-rows:repeat(4,auto);/*se crean 4 filas y se reparten de forma automatica*/
 }
