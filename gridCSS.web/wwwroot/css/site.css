@@ -61,11 +61,113 @@ img {
 
 
 .grid-explicit {
-    /*grid 3x3*/
+    /*grid 3 x 3*/
     display: grid;
     grid-template-columns: 50% 100px 1fr; /*creacion de columnas*/
     grid-template-rows: 2rem 20vh 30%; /*creacion de filas*/
-    /*grid de 5x 4*/
+    /*grid de 5 x 4*/
     grid-template-columns: repeat(5, 20%); /* son 5 columnas repartidas de al 20%*/
-    grid-template-rows:repeat(4,auto);/*se crean 4 filas y se reparten de forma automatica*/
+    grid-template-rows: repeat(4,auto); /*se crean 4 filas y se reparten de forma automatica*/
+    /*grid de 4 x 5*/
+    grid-template-columns: 20% 30% 30% 20%; /* son 5 columnas repartidas de al 20%*/
+    grid-template-rows: repeat(5,auto); /*se crean 4 filas y se reparten de forma automatica*/
+    /*grid de 4 x 5*/
+    grid-template-columns: repeat(2, 20%) repeat(2, 30%);
+    grid-template-rows: repeat(5,auto);
+    /*grosor de las lineas de grilla*/
+    /*grid-gap:50px 100px;/*para crear grosor de lines entre las columnas*/
+    gap: 1vh 1vw; /*este es el que se queda*/
+    gap: 0; /*para que no se desborde nada*/
 }
+
+/*de la clase grid-explicit seleccione el elemento 310*/
+.grid-explicit .item:nth-child(10) {
+    color: blueviolet;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    /*atajos*/
+    grid-row: 2/3;
+    grid-column: 3/4;
+    /*conbinas celdas*/
+    grid-column: 3/5 ;/*este va de 3 a las 5 se combina celdas*/
+    /*atajo de grid row y column*/
+    grid-area:2/3/3/5;
+
+
+}
+
+.grid-explicit .item:nth-child(12) {
+    color:cadetblue;
+    grid-row:span 2; /*de esta forma se abarcan dos filas*/
+    grid-column:span 3 ;/*espacio  entre columnas*/
+    /*mezcla de los dos*/    
+}
+
+.grid-explicit .item:nth-child(15) {
+    color: cadetblue;
+    grid-row:1 / span 3; /*de esta forma se abarcan tres filas*/
+    grid-column:1/ span 3; /*espacio  entre columnas*/
+       
+}
+
+/*nombre entre lineas*/
+.grid-line-names {
+    /*grid de 3x3*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: [linea-c-1] 1fr [linea-c-2] 1fr [linea-c-3] 1fr ;
+    grid-template-rows: [linea-r-1] 1fr [linea-r-2] 1fr [linea-r-3] 1fr ;
+}
+
+.grid-line-names .item:nth-child(3) {
+    color: aquamarine;
+    grid-row: linea-r-3/linea-r-3;
+    grid-column: linea-c-1/linea-c-4;
+}
+
+.grid-areas{
+    /*2 x 3*/
+    display:grid;
+    grid-template-columns:1fr 200px;
+    grid-template-rows:100px repeat(2, 1fr) 60px;
+    /*se ddistribulle las areas con los nombre que une desee*/
+    grid-template-areas:
+        "header header"
+        "content sidebar"
+        "content ."
+        "footer footer";
+}
+/*se realiza la maquetacion con nombres dados en el grid-template-areas*/
+.header{
+    grid-area:header;
+}
+
+.content{
+    grid-area:content;
+}
+
+.sidebar {
+    grid-area: sidebar,
+}
+
+.footer {
+    grid-area: footer;
+}
+
+/*grid implicit*/
+
+.grid-implicit{
+    width:40%;
+    display:grid;
+    display:inline-grid;/*va a ocupar solo el espacion requerido pero tira a la izquierda*/
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows:repeat(4, 200px) ;/*tiene 200'x desde 1 al 4 despues de este es automatica la altura*/
+}
+
+
+
+
+
